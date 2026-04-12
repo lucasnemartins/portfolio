@@ -184,7 +184,7 @@
     <div class="project-card">
       <div class="project-img-wrap" onclick="openModal('imagens/imdb.png')">
         <img class="project-img" src="imagens/imdb.png" alt="Dashboard IMDB"
-          onerror="this.parentElement.innerHTML='<div class=\'project-img-placeholder\'>Adicione images/imdb.png</div>'"/>
+          onerror="imgError(this, 'Adicione imagens/imdb.png')"/>
       </div>
       <div class="project-body">
         <div class="project-tags"><span class="project-tag">Qlik Sense</span><span class="project-tag">IMDB</span><span class="project-tag">Entretenimento</span></div>
@@ -205,7 +205,7 @@
     <div class="project-card">
       <div class="project-img-wrap" onclick="openModal('imagens/ifood.png')">
         <img class="project-img" src="imagens/ifood.png" alt="Dashboard iFood"
-          onerror="this.parentElement.innerHTML='<div class=\'project-img-placeholder\'>Adicione images/ifood.png</div>'"/>
+          onerror="imgError(this, 'Adicione imagens/ifood.png')"/>
       </div>
       <div class="project-body">
         <div class="project-tags"><span class="project-tag">Qlik Sense</span><span class="project-tag">iFood</span><span class="project-tag">Logística</span></div>
@@ -226,7 +226,7 @@
     <div class="project-card">
       <div class="project-img-wrap" onclick="openModal('imagens/vendas.png')">
         <img class="project-img" src="imagens/vendas.png" alt="Dashboard de Vendas"
-          onerror="this.parentElement.innerHTML='<div class='project-img-placeholder'>Adicione imagens/vendas.png</div>'"/>
+          onerror="imgError(this, 'Adicione imagens/vendas.png')"/>
       </div>
       <div class="project-body">
         <div class="project-tags"><span class="project-tag">Qlik Sense</span><span class="project-tag">Vendas</span><span class="project-tag">Faturamento</span></div>
@@ -254,7 +254,7 @@
     <div class="project-card">
       <div class="project-img-wrap" onclick="openModal('imagens/powerbi-vendas.png')">
         <img class="project-img" src="imagens/powerbi-vendas.png" alt="Dashboard Vendas Power BI"
-          onerror="this.parentElement.innerHTML='<div class='project-img-placeholder'>Adicione imagens/powerbi-vendas.png</div>'"/>
+          onerror="imgError(this, 'Adicione imagens/powerbi-vendas.png')"/>
       </div>
       <div class="project-body">
         <div class="project-tags"><span class="project-tag">Power BI</span><span class="project-tag">Vendas</span><span class="project-tag">KPI</span></div>
@@ -301,6 +301,9 @@
   <img id="modalImg" src="" alt="Dashboard" onclick="event.stopPropagation()" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:4px;" />
 </div>
 <script>
+  function imgError(el, msg) {
+    el.parentElement.innerHTML = '<div class="project-img-placeholder">' + msg + '</div>';
+  }
   function openModal(src) {
     document.getElementById('modalImg').src = src;
     document.getElementById('imgModal').classList.add('active');
