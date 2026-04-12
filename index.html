@@ -239,4 +239,27 @@
 </section>
 
 <footer>
-  <div class="footer-logo">Carlos<span>.
+  <div class="footer-logo">Carlos<span>.Mendes</div>
+  <div class="footer-txt">© 2024 · Data Analytics & Business Intelligence</div>
+</footer>
+
+<div class="img-modal" id="imgModal" onclick="closeModal()">
+  <span class="img-modal-close" onclick="closeModal()">&times;</span>
+  <img id="modalImg" src="" alt="Dashboard" onclick="event.stopPropagation()" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:4px;" />
+</div>
+<script>
+  function openModal(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imgModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('imgModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
