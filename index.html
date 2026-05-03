@@ -76,7 +76,7 @@
   /* PROJETOS */
   .projects { padding: 120px 80px; background: var(--bg2); }
   .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; }
-  .projects-grid .project-card:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+
   .project-card { background: var(--bg3); overflow: hidden; position: relative; transition: all 0.4s; }
   .project-card::after { content: ''; position: absolute; inset: 0; border: 1px solid transparent; transition: border-color 0.4s; pointer-events: none; }
   .project-card:hover::after { border-color: rgba(217,196,168,0.15); }
@@ -89,6 +89,7 @@
   .img-modal-close { position:absolute; top:24px; right:32px; font-size:28px; color:rgba(255,255,255,0.5); cursor:pointer; font-family:sans-serif; line-height:1; transition:color 0.2s; }
   .img-modal-close:hover { color:#fff; }
   .project-img-wrap { cursor:zoom-in; }
+
 
   .project-img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: brightness(0.65) sepia(0.15); display: block; transition: all 0.6s; }
   .project-img-placeholder { width: 100%; height: 260px; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; }
@@ -280,9 +281,9 @@
 
 
     <div class="project-card">
-      <div class="project-img-wrap" onclick="openModal('imagens/notas-fiscais.png')">
-        <img class="project-img" src="imagens/notas-fiscais.png" alt="Notas Fiscais Portal de Transparência"
-          onerror="imgError(this, 'Adicione imagens/notas-fiscais.png')"/>
+      <div class="project-img-wrap" onclick="openModal('imagens/qlik-notas-fiscais.png')">
+        <img class="project-img" src="imagens/qlik-notas-fiscais.png" alt="Notas Fiscais Portal de Transparência"
+          onerror="imgError(this, 'Adicione imagens/qlik-notas-fiscais.png')"/>
       </div>
       <div class="project-body">
         <div class="project-tags"><span class="project-tag">Qlik Sense</span><span class="project-tag">Fiscal</span><span class="project-tag">Governo</span></div>
@@ -300,7 +301,7 @@
       </div>
     </div>
 
-  <div style="margin:56px 0 16px;display:flex;align-items:center;gap:16px;">
+  <div style="margin:32px 0 16px;display:flex;align-items:center;gap:16px;">
     <div style="width:28px;height:1px;background:#D9C4A8;"></div>
     <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D9C4A8;">Power BI</span>
   </div>
