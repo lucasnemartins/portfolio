@@ -147,6 +147,13 @@
     nav { padding: 14px 20px; }
     .nav-links a { font-size: 9px; letter-spacing: 1.5px; }
   }
+
+  .video-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:1000; align-items:center; justify-content:center; padding:40px; cursor:pointer; }
+  .video-modal.active { display:flex; }
+  .video-modal-inner { position:relative; width:100%; max-width:900px; aspect-ratio:16/9; }
+  .video-modal-inner iframe { width:100%; height:100%; border:none; border-radius:4px; }
+  .video-modal-close { position:absolute; top:-40px; right:0; font-size:32px; color:rgba(255,255,255,0.5); cursor:pointer; line-height:1; transition:color 0.2s; }
+  .video-modal-close:hover { color:#fff; }
 </style>
 </head>
 <body>
@@ -164,7 +171,7 @@
   <div class="hero-bg"></div>
   <div class="hero-texture"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow"><div class="hero-bar"></div><span class="hero-eyebrow-txt">Portfólio de Data Analytics & BI</span></div>
+    <div class="hero-eyebrow"><div class="hero-bar"></div><span class="hero-eyebrow-txt">Estudante de Data Analytics & BI</span></div>
     <h1>Dados que<br><em>orientam</em><br>decisões</h1>
     <p>Portfólio ativo em BI, visualização e análise — sempre buscando transformar dados em decisões.</p>
     <div class="hero-btns">
@@ -272,6 +279,27 @@
     </div>
 
   </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap" onclick="openModal('imagens/qlik-notas-fiscais.png')">
+        <img class="project-img" src="imagens/qlik-notas-fiscais.png" alt="Notas Fiscais Portal de Transparência"
+          onerror="imgError(this, 'Adicione imagens/qlik-notas-fiscais.png')"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags"><span class="project-tag">Qlik Sense</span><span class="project-tag">Fiscal</span><span class="project-tag">Governo</span></div>
+        <div class="project-title">Notas Fiscais — Portal de Transparência</div>
+        <div class="project-desc">Dashboard analisando valor de notas fiscais por dia em janeiro, top 10 destinatários, top 10 produtos e serviços e contribuição de imposto estadual por órgão.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">7.58Bi</div><div class="metric-lbl">Valor nota fiscal</div></div>
+          <div class="metric"><div class="metric-val">109.1k</div><div class="metric-lbl">Qtd. notas fiscais</div></div>
+          <div class="metric"><div class="metric-val">393.3k</div><div class="metric-lbl">Qtd. produtos</div></div>
+        </div>
+      </div>
+      <div class="project-footer" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <span class="study-badge-sm">Portfólio · Dados do Portal de Transparência</span>
+        <a href="javascript:void(0)" onclick="openVideo('https://youtu.be/9gVp_2tLWQw')" class="view-link" style="color:#D9C4A8;border:1px solid rgba(217,196,168,0.3);padding:6px 14px;font-size:9px;letter-spacing:2px;cursor:pointer;">▶ Ver demo</a>
+      </div>
+    </div>
 
   <div style="margin:56px 0 16px;display:flex;align-items:center;gap:16px;">
     <div style="width:28px;height:1px;background:#D9C4A8;"></div>
@@ -394,9 +422,9 @@
     <p>Em constante evolução — aberto a oportunidades, colaborações e troca de experiências. Vamos conversar!</p>
     <a href="/cdn-cgi/l/email-protection#f29193809e9d81b2979f939b9edc919d9f" class="btn-primary" style="display:inline-block;">Enviar mensagem</a>
     <div class="contact-links">
-      <a href="mailto:lucasnmartins@outlook.com.br" target="_blank" class="contact-link">✉ lucasnmartins@outlook.com.br</a>
-      <a href="https://www.linkedin.com/in/lucasnemartins" target="_blank" class="contact-link">💼 LinkedIn</a>
-      <a href="https://wa.me/5511994564679" target="_blank" class="contact-link">💬 WhatsApp</a>
+      <a href="mailto:SEU-EMAIL@gmail.com" target="_blank" class="contact-link">✉ seu-email@gmail.com</a>
+      <a href="https://linkedin.com/in/SEU-USUARIO" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://wa.me/55SEUNUMERO" target="_blank" class="contact-link">💬 WhatsApp</a>
     </div>
   </div>
 </section>
@@ -406,11 +434,29 @@
   <div class="footer-txt">© 2026 · Lucas Martins · Portfólio de Data Analytics & BI</div>
 </footer>
 
+
+<div class="video-modal" id="videoModal" onclick="closeVideo()">
+  <div class="video-modal-inner" onclick="event.stopPropagation()">
+    <span class="video-modal-close" onclick="closeVideo()">&times;</span>
+    <iframe id="videoFrame" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
 <div class="img-modal" id="imgModal" onclick="closeModal()">
   <span class="img-modal-close" onclick="closeModal()">&times;</span>
   <img id="modalImg" src="" alt="Dashboard" onclick="event.stopPropagation()" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:4px;" />
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function openVideo(url) {
+    var id = url.split('/').pop().split('?')[0];
+    document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    document.getElementById('videoFrame').src = '';
+    document.getElementById('videoModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
   function imgError(el, msg) {
     el.parentElement.innerHTML = '<div class="project-img-placeholder">' + msg + '</div>';
   }
@@ -424,7 +470,7 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') { closeModal(); closeVideo(); }
   });
 </script>
 </body>
